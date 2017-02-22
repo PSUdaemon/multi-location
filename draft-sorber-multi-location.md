@@ -47,14 +47,28 @@ This document uses terminology defined in RFC 7231 [@!RFC7231].
 
 # Multi-Location Redirect
 
-~~~ ascii-art
-{
-  "locations": [
-    "https://www1.example.com/e06c0d9e-1e7d-4cdc-9a36-86f63553eac7",
-    "https://www2.example.com/07d81ae8-c991-46ee-8c66-2fcb7d6ed3c8"
-  ]
-}
-~~~
+F> ~~~ ascii-art
+F> GET /test HTTP/1.1
+F> Host: www.example.com
+F> Accept: */*
+F> ~~~
+F> Figure: Example Request
+F>
+F> ~~~ ascii-art
+F> HTTP/1.1 302 Found
+F> Date: Wed, 22 Feb 2017 14:18:32 GMT
+F> Location: https://www1.example.com/test
+F> Content-Type: application/json
+F> Content-Length: 98
+F>
+F> {
+F>   "locations": [
+F>     "https://www1.example.com/test",
+F>     "https://www2.example.com/test"
+F>   ]
+F> }
+F> ~~~
+F> Figure: Example Response
 
 # Security Considerations
 
