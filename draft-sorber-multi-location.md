@@ -87,7 +87,21 @@ specified in RFC 7159 [@RFC7159].
 The payload **MUST** be JSON formatted [RFC7159]. The only data element **MUST** be a string array
 named "locations" that contains the ordered set of URIs for the client to use.
 
-## Example
+# Security Considerations
+
+None.
+
+# IANA Considerations
+
+None.
+
+# Related Work
+
+Out-of-Band Encoding I-D [@I-D.reschke-http-oob-encoding] for blind caching.
+
+{backmatter}
+
+# Example
 
 F> ~~~ ascii-art
 F> GET /test HTTP/1.1
@@ -111,20 +125,6 @@ F>   ]
 F> }
 F> ~~~
 F> Figure: Example Response
-
-# Security Considerations
-
-None.
-
-# IANA Considerations
-
-None.
-
-# Related Work
-
-Out-of-Band Encoding I-D [@I-D.reschke-http-oob-encoding] for blind caching.
-
-{backmatter}
 
 # Acknowledgements
 
