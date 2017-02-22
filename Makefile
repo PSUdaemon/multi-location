@@ -32,4 +32,4 @@ clean : clearcache
 %.txt :  %.xml
 	$(RFC2TXT) $<
 
-.PHONY : all clean clearcache txtdocs htmldocs
+.PHONY : all clean clearcache xmldocs txtdocs htmldocs
