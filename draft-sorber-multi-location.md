@@ -35,7 +35,17 @@ specified.
 
 # Introduction
 
-Foo.
+HTTP redirects (302 Found) are often used to forward a client to a closer server
+that has content the client is looking for using a `Location` header. The `Location`
+header may contain a single value of a new URI for the client to retrieve. If the
+server hosting the redirected URI is not able to serve it, the client must decide what
+to do next, perhaps going back to the origninal URI or retrying the redirect URI. It
+would be more helpful if the original server could provide multiple ordered URI
+options for the client to try before failing.
+
+This document defines a payload syntax that can exist in a 302 resposne to provide
+alternate URI sources as well as operate as a traditional 302 redirect with a `Location`
+header to maintain backward compatibility.
 
 ## Conventions and Terminology
 
@@ -46,6 +56,38 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 This document uses terminology defined in RFC 7231 [@!RFC7231].
 
 # Multi-Location Redirect
+
+This document extends the 302 response code in Section 6.4.3 of RFC 7231 [RFC7231].
+
+## Request
+
+This specification utilizes a standard request format. No modifications are needed.
+
+## Response
+
+The response is designed to be backward compatible with a traditional 302 Found response.
+The response code is still 302 and still utilizes a `Location` header. The differences are
+a `Content-Type` header and a payload.
+
+### Reponse Code
+
+The server **MUST** use a 302 response code.
+
+### Location Header
+
+The server **SHOULD** add a `Location` header with the primary redirect URI.
+
+### Content-Type Header
+
+The server **MUST** add a `Content-Type` header with the value "application/json" as
+specified in RFC 7159 [@RFC7159].
+
+### Payload
+
+The payload **MUST** be JSON formatted [RFC7159]. The only data element **MUST** be a string array
+named "locations" that contains the ordered set of URIs for the client to use.
+
+## Example
 
 F> ~~~ ascii-art
 F> GET /test HTTP/1.1
