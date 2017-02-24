@@ -75,7 +75,9 @@ The server **MUST** use a 302 response code.
 
 ### Location Header
 
-The server **SHOULD** add a `Location` header with the primary redirect URI.
+The server **SHOULD** add a `Location` header with the primary redirect URI. This may not
+always be the first URI in your payload JSON, for example if you are using oportunistic
+caching.
 
 ### Content-Type Header
 
